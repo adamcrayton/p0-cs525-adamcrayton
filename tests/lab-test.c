@@ -34,9 +34,9 @@ void test_multiply(void) {
 }
 
 void test_incorrect_sum(void) {
-  TEST_ASSERT_FALSE(5 == bad_sum(2, 3)); // This will fail because bad_sum is incorrect
-  TEST_ASSERT_FALSE(-2 == bad_sum(-5, 3)); // This will also fail
-  TEST_ASSERT_FALSE(10 == bad_sum(5, 5)); // This will fail as well
+  TEST_ASSERT_FALSE(5 == incorrect_sum(2, 3)); // This will fail because bad_sum is incorrect
+  TEST_ASSERT_FALSE(-2 == incorrect_sum(-5, 3)); // This will also fail
+  TEST_ASSERT_FALSE(10 == incorrect_sum(5, 5)); // This will fail as well
 }
 
 int main(void) {

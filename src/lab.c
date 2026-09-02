@@ -38,7 +38,7 @@ int multiply(int a, int b)
   return a * b;
 }
 
-int bad_sum(int a, int b)
+int incorrect_sum(int a, int b)
 {
   // Intentionally incorrect implementation for testing purposes
   return a + b + 1; // This is incorrect; it should be a + b

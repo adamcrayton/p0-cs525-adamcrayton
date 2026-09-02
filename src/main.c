@@ -13,6 +13,7 @@ int main(void)
     char *greeting = get_greeting("World");
     if (greeting) {
         printf("%s\n", greeting);
+        greeting = NULL;
         free(greeting); // Free the allocated memory for the greeting
     } else {
         printf("Failed to create greeting.\n");
