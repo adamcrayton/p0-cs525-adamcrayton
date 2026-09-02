@@ -1,0 +1,55 @@
+        -:    0:Source:src/lab.c
+        -:    1:#include "lab.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:
+function get_greeting called 12 returned 100% blocks executed 75%
+       12:    5:char *get_greeting(const char *restrict name)
+        -:    6:{
+       12:    7:  if (name == NULL)
+branch  0 taken 33% (fallthrough)
+branch  1 taken 67%
+        -:    8:  {
+        4:    9:    return NULL;
+        -:   10:  }
+        -:   11:
+        -:   12:  // Allocate memory for the greeting message
+        8:   13:  int length = snprintf(NULL, 0, "Hello, %s!", name);
+        8:   14:  if (length < 0) // GCOVR_EXCL_START
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:   15:  {
+    #####:   16:    return NULL; // snprintf failed
+        -:   17:  } // GCOVR_EXCL_STOP
+        -:   18:
+        -:   19:  //Casting is safe here because we know length is non-negative
+        8:   20:  size_t alloc_size = (size_t) length + 1; // +1 for the null terminator
+        8:   21:  char *greeting = malloc( alloc_size);
+        -:   22:
+        -:   23:
+        8:   24:  if (greeting == NULL) // GCOVR_EXCL_START
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:   25:  {
+    #####:   26:    return NULL; // Memory allocation failed
+        -:   27:  }  // GCOVR_EXCL_STOP
+        -:   28:
+        -:   29:
+        -:   30:  // Create the greeting message
+        8:   31:  snprintf(greeting, alloc_size, "Hello, %s!", name);
+        -:   32:
+        8:   33:  return greeting;
+        -:   34:}
+        -:   35:
+function multiply called 12 returned 100% blocks executed 100%
+       12:   36:int multiply(int a, int b)
+        -:   37:{
+       12:   38:  return a * b;
+        -:   39:}
+        -:   40:
+function incorrect_sum called 12 returned 100% blocks executed 100%
+       12:   41:int incorrect_sum(int a, int b)
+        -:   42:{
+        -:   43:  // Intentionally incorrect implementation for testing purposes
+       12:   44:  return a + b + 1; // This is incorrect; it should be a + b
+        -:   45:}

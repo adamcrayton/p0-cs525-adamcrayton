@@ -1,0 +1,94 @@
+        -:    0:Source:tests/lab-test.c
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include "harness/unity.h"
+        -:    4:#include "../src/lab.h"
+        -:    5:
+        -:    6:
+function setUp called 12 returned 100% blocks executed 100%
+       12:    7:void setUp(void) {
+       12:    8:  printf("Setting up tests...\n");
+call    0 returned 100%
+       12:    9:}
+        -:   10:
+function tearDown called 12 returned 100% blocks executed 100%
+       12:   11:void tearDown(void) {
+       12:   12:  printf("Tearing down tests...\n");
+call    0 returned 100%
+       12:   13:}
+        -:   14:
+function test_get_greeting called 4 returned 100% blocks executed 75%
+        4:   15:void test_get_greeting(void) {
+        4:   16:  char *greeting = get_greeting("Alice");
+call    0 returned 100%
+       4*:   17:  TEST_ASSERT_NOT_NULL(greeting);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+        4:   18:  TEST_ASSERT_EQUAL_STRING("Hello, Alice!", greeting);
+call    0 returned 100%
+        4:   19:  free(greeting); // Free the allocated memory for the greeting
+        -:   20:
+        4:   21:  greeting = get_greeting(NULL);
+call    0 returned 100%
+       4*:   22:  TEST_ASSERT_NULL(greeting);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+        -:   23:
+        4:   24:  greeting = get_greeting("");
+call    0 returned 100%
+       4*:   25:  TEST_ASSERT_NOT_NULL(greeting);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+        4:   26:  TEST_ASSERT_EQUAL_STRING("Hello, !", greeting);
+call    0 returned 100%
+        4:   27:  free(greeting);
+        4:   28:}
+        -:   29:
+function test_multiply called 4 returned 100% blocks executed 100%
+        4:   30:void test_multiply(void) {
+        4:   31:  TEST_ASSERT_EQUAL(6, multiply(2, 3));
+call    0 returned 100%
+call    1 returned 100%
+        4:   32:  TEST_ASSERT_EQUAL(-15, multiply(-5, 3));
+call    0 returned 100%
+call    1 returned 100%
+        4:   33:  TEST_ASSERT_EQUAL(0, multiply(0, 10));
+call    0 returned 100%
+call    1 returned 100%
+        4:   34:}
+        -:   35:
+function test_incorrect_sum called 4 returned 100% blocks executed 70%
+        4:   36:void test_incorrect_sum(void) {
+       4*:   37:  TEST_ASSERT_FALSE(5 == incorrect_sum(2, 3)); // This will fail because bad_sum is incorrect
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+call    3 never executed
+       4*:   38:  TEST_ASSERT_FALSE(-2 == incorrect_sum(-5, 3)); // This will also fail
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+call    3 never executed
+       4*:   39:  TEST_ASSERT_FALSE(10 == incorrect_sum(5, 5)); // This will fail as well
+call    0 returned 100%
+branch  1 taken 0% (fallthrough)
+branch  2 taken 100%
+call    3 never executed
+        4:   40:}
+        -:   41:
+function main called 4 returned 100% blocks executed 100%
+        4:   42:int main(void) {
+        4:   43:  UNITY_BEGIN();
+call    0 returned 100%
+        4:   44:  RUN_TEST(test_get_greeting);
+call    0 returned 100%
+        4:   45:  RUN_TEST(test_multiply);
+call    0 returned 100%
+        4:   46:  RUN_TEST(test_incorrect_sum);
+call    0 returned 100%
+        4:   47:  return UNITY_END();
+call    0 returned 100%
+        -:   48:}

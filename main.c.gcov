@@ -1,0 +1,29 @@
+        -:    0:Source:src/main.c
+        -:    1:#include "lab.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:
+        -:    5:#ifdef TEST
+        -:    6:#define main main_exclude
+        -:    7:#endif
+        -:    8:
+        -:    9:
+        -:   10:
+function main_exclude called 0 returned 0% blocks executed 0%
+    #####:   11:int main(void)
+        -:   12:{
+    #####:   13:    char *greeting = get_greeting("World");
+call    0 never executed
+    #####:   14:    if (greeting) {
+branch  0 never executed
+branch  1 never executed
+    #####:   15:        printf("%s\n", greeting);
+call    0 never executed
+    #####:   16:        greeting = NULL;
+    #####:   17:         free(greeting);  //Free the allocated memory for the greeting
+        -:   18:    } else {
+    #####:   19:        printf("Failed to create greeting.\n");
+call    0 never executed
+        -:   20:    }
+    #####:   21:    return 0;
+        -:   22:}
