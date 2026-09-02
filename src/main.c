@@ -14,7 +14,7 @@ int main(void)
     if (greeting) {
         printf("%s\n", greeting);
         greeting = NULL;
-        free(greeting); // Free the allocated memory for the greeting
+        // free(greeting);  Free the allocated memory for the greeting -- Add Memory Leak
     } else {
         printf("Failed to create greeting.\n");
     }
