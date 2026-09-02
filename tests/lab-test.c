@@ -27,8 +27,22 @@ void test_get_greeting(void) {
   free(greeting);
 }
 
+void test_multiply(void) {
+  TEST_ASSERT_EQUAL(6, multiply(2, 3));
+  TEST_ASSERT_EQUAL(-15, multiply(-5, 3));
+  TEST_ASSERT_EQUAL(0, multiply(0, 10));
+}
+
+void test_incorrect_sum(void) {
+  TEST_ASSERT_FALSE(5 == bad_sum(2, 3)); // This will fail because bad_sum is incorrect
+  TEST_ASSERT_FALSE(-2 == bad_sum(-5, 3)); // This will also fail
+  TEST_ASSERT_FALSE(10 == bad_sum(5, 5)); // This will fail as well
+}
+
 int main(void) {
   UNITY_BEGIN();
   RUN_TEST(test_get_greeting);
+  RUN_TEST(test_multiply);
+  RUN_TEST(test_incorrect_sum);
   return UNITY_END();
 }
